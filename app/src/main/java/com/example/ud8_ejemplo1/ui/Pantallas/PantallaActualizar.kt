@@ -1,3 +1,4 @@
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -15,19 +16,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.ud8_ejemplo1.R
 import com.example.ud8_ejemplo1.modelo.Producto
-import com.example.ud8_ejemplo1.ui.InventarioUIState
 
 @Composable
 fun PantallaActualizar(
-    appUIState: InventarioUIState,
+    producto: Producto,
     onProductoActualizado: (Producto) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var producto: Producto by remember {mutableStateOf(Producto(0, "", 0.0, 0))}
 
-    if(appUIState is InventarioUIState.ObtenerExito) {
-       producto = appUIState.producto
-    }
     var nombre by remember { mutableStateOf(producto.nombre) }
     var precio by remember { mutableStateOf(producto.precio) }
     var cantidad by remember { mutableStateOf(producto.cantidad) }

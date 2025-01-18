@@ -29,6 +29,9 @@ class InventarioViewModel(private val productoRepositorio: ProductoRepositorio) 
     var inventarioUIState: InventarioUIState by mutableStateOf(InventarioUIState.Cargando)
         private set
 
+    var productoPulsado: Producto by mutableStateOf(Producto(0, "", 0.0, 0))
+        private set
+
     init {
         obtenerProductos()
     }
@@ -48,6 +51,7 @@ class InventarioViewModel(private val productoRepositorio: ProductoRepositorio) 
         viewModelScope.launch {
             inventarioUIState = try {
                 val producto = productoRepositorio.obtenerProducto(id)
+                productoPulsado = producto
                 InventarioUIState.ObtenerExito(producto)
             } catch (e: Exception) {
                 InventarioUIState.Error

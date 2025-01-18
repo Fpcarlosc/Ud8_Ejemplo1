@@ -99,7 +99,7 @@ fun Ud8_ejemplo1App(
             }
             composable(route = Pantallas.Actualizar.name) {
                 PantallaActualizar(
-                    appUIState = uiState,
+                    producto = viewModel.productoPulsado,
                     onProductoActualizado = {
                         viewModel.actualizarProducto(it)
                         navController.popBackStack(Pantallas.Inicio.name, inclusive = false)
